@@ -1,0 +1,10 @@
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\bin\Debug\TP-WinForm-Eq17.exe.config
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\bin\Debug\TP-WinForm-Eq17.exe
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\bin\Debug\TP-WinForm-Eq17.pdb
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\obj\Debug\TP-WinForm-Eq17.csproj.AssemblyReference.cache
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\obj\Debug\TP-WinForm-Eq17.csproj.SuggestedBindingRedirects.cache
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\obj\Debug\TP_WinForm_Eq17.Properties.Resources.resources
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\obj\Debug\TP-WinForm-Eq17.csproj.GenerateResource.cache
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\obj\Debug\TP-WinForm-Eq17.csproj.CoreCompileInputs.cache
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\obj\Debug\TP-WinForm-Eq17.exe
+G:\Repos\TP-WinForm-Eq17\TP-WinForm-Eq17\obj\Debug\TP-WinForm-Eq17.pdb
