@@ -67,5 +67,33 @@ namespace TP_WinForm_Eq17
             }
             currentImg = 1;
         }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == seleccionado.Id);
+            if (imagenesMismoIdArticulo.Count > 1)
+            {
+                if (currentImg < imagenesMismoIdArticulo.Count)
+                {
+                    currentImg++;
+                }
+                pbxArticulos.Load(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
+            }
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == seleccionado.Id);
+            if (imagenesMismoIdArticulo.Count > 1)
+            {
+                if (currentImg > 1)
+                {
+                    currentImg--;
+                }
+                pbxArticulos.Load(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
+            }
+        }
     }
 }
