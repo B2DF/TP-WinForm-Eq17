@@ -60,6 +60,7 @@
             this.btnAceptar.TabIndex = 1;
             this.btnAceptar.Text = "Agregar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnModificar
             // 

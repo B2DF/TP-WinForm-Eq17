@@ -7,25 +7,24 @@ using dominio;
 
 namespace negocio
 {
-    public class ImagenesNegocio
+    public class CategoriaNegocio
     {
-        public List<Imagenes> listar()
+        public List<Categoria> listar()
         {
-            List<Imagenes> listaImagenes = new List<Imagenes>();
+            List<Categoria> listaCategorias = new List<Categoria>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT Id, IdArticulo, ImagenUrl FROM IMAGENES");
+                datos.setearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    Imagenes aux = new Imagenes();
+                    Categoria aux = new Categoria();
                     aux.Id = (int)datos.Lector["Id"];
-                    aux.IdArticulo = (int)datos.Lector["IdArticulo"];
-                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                    listaImagenes.Add(aux);
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    listaCategorias.Add(aux);
                 }
-                return listaImagenes;
+                return listaCategorias;
             }
             catch (Exception ex)
             {

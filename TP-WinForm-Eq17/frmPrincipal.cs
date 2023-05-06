@@ -102,5 +102,12 @@ namespace TP_WinForm_Eq17
             frmDetalleArticulo frmDetalle = new frmDetalleArticulo(seleccionado);
             frmDetalle.ShowDialog();
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            frmAltaArticulo alta = new frmAltaArticulo();
+            alta.ShowDialog();
+            //cargar();
+        }
     }
 }
