@@ -95,5 +95,12 @@ namespace TP_WinForm_Eq17
                 pbxArticulos.Load(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
             }
         }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            frmDetalleArticulo frmDetalle = new frmDetalleArticulo(seleccionado);
+            frmDetalle.ShowDialog();
+        }
     }
 }
