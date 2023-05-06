@@ -48,16 +48,16 @@ namespace TP_WinForm_Eq17
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(tbxPrecio.Text);
 
-                if (articulo.Id != 0)
-                {
-                    negocio.modificar(articulo);
-                    MessageBox.Show("Modificado exitosamente");
-                }
-                else
-                {
+                //if (articulo.Id != 0)
+                //{
+                  //  negocio.modificar(articulo);
+                    //MessageBox.Show("Modificado exitosamente");
+                //}
+                //else
+                //{
                     negocio.agregar(articulo);
                     MessageBox.Show("Agregado exitosamente");
-                }
+                //}
 
                 Close();
 

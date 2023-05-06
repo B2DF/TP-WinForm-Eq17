@@ -102,12 +102,24 @@ namespace TP_WinForm_Eq17
             frmDetalleArticulo frmDetalle = new frmDetalleArticulo(seleccionado);
             frmDetalle.ShowDialog();
         }
-
+        private void cargar()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                listaArticulos = negocio.listar();
+                dgvArticulos.DataSource = listaArticulos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             frmAltaArticulo alta = new frmAltaArticulo();
             alta.ShowDialog();
-            //cargar();
+            cargar();
         }
     }
 }
