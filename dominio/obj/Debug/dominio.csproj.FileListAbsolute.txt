@@ -1,0 +1,6 @@
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\dominio\bin\Debug\dominio.dll
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\dominio\bin\Debug\dominio.pdb
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\dominio\obj\Debug\dominio.dll
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\dominio\obj\Debug\dominio.pdb

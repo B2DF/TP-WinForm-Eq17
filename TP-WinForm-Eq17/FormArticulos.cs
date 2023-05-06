@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using negocio;
+using dominio;
 
 namespace TP_WinForm_Eq17
 {
-    public partial class Form1 : Form
+    public partial class FormArticulos : Form
     {
-        public Form1()
+        public FormArticulos()
         {
             InitializeComponent();
+        }
+
+        private void FormArticulos_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar();
         }
     }
 }

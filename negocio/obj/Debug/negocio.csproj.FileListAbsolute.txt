@@ -1,0 +1,9 @@
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\bin\Debug\negocio.dll
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\bin\Debug\negocio.pdb
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\bin\Debug\dominio.dll
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\bin\Debug\dominio.pdb
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\obj\Debug\negocio.csproj.CopyComplete
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\obj\Debug\negocio.dll
+C:\Users\karit\Desktop\UTN-2022-PROGRAMACION-3\TP-WinForm-Eq17\negocio\obj\Debug\negocio.pdb
