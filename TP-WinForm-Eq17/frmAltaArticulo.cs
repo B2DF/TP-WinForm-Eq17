@@ -18,10 +18,20 @@ namespace TP_WinForm_Eq17
     {
         private Articulo articulo = null;
         private OpenFileDialog archivo = null;
+        private List<Imagenes> imagenes;
         public frmAltaArticulo()
         {
             InitializeComponent();
         }
+
+        public frmAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo";
+        }
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -36,6 +46,7 @@ namespace TP_WinForm_Eq17
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
+
             try
             {
                 if (articulo == null)
@@ -46,18 +57,19 @@ namespace TP_WinForm_Eq17
                 articulo.Descripcion = tbxDescripcion.Text;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                //imagenes
                 articulo.Precio = decimal.Parse(tbxPrecio.Text);
 
-                //if (articulo.Id != 0)
-                //{
-                  //  negocio.modificar(articulo);
-                    //MessageBox.Show("Modificado exitosamente");
-                //}
-                //else
-                //{
+                if (articulo.Id != 0)
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
                     negocio.agregar(articulo);
                     MessageBox.Show("Agregado exitosamente");
-                //}
+                }
 
                 Close();
 
@@ -73,14 +85,19 @@ namespace TP_WinForm_Eq17
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
+
             try
             {
+                imagenes = imagenesNegocio.listar();
+                pbxAltaArticulo.Load(imagenes[0].ImagenUrl);
                 cboMarca.DataSource = marcaNegocio.listar();
                 cboMarca.ValueMember = "Id";
                 cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DataSource = categoriaNegocio.listar();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Descripcion";
+
                 if (articulo != null)
                 {
                     tbxCodigo.Text = articulo.Codigo;
@@ -89,6 +106,7 @@ namespace TP_WinForm_Eq17
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                     tbxPrecio.Text = articulo.Precio.ToString();
+
                 }
             }
             catch (Exception ex)
@@ -96,6 +114,24 @@ namespace TP_WinForm_Eq17
                 MessageBox.Show(ex.ToString());
             } 
             
+        }
+
+        private void tbxUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(tbxUrlImagen.Text);
+             
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxAltaArticulo.Load(tbxUrlImagen.Text);
+            }
+            catch (Exception ex)
+            {
+                pbxAltaArticulo.Load("https://www.campana.gob.ar/wp-content/uploads/2022/05/placeholder-1.png");
+            }
         }
     }
 }
