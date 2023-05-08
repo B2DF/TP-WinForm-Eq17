@@ -31,90 +31,65 @@ namespace TP_WinForm_Eq17
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            //ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            //ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
-            //try
-            //{
-            //    listaArticulos = articuloNegocio.listar();
-            //    imagenes = imagenesNegocio.listar();
-            //    dgvArticulos.DataSource = listaArticulos;
-            //    dgv.DataSource = imagenes;
-            //    pbxArticulos.Load(imagenes[0].ImagenUrl);
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    //throw ex;
-            //    MessageBox.Show(ex.ToString());
-            //}
             cargar();
-        
-       
-
             cbSeleccionar.Items.Add("Codigo");
             cbSeleccionar.Items.Add("Nombre");
             cbSeleccionar.Items.Add("Descripcion");
             cbSeleccionar.Items.Add("Precio");
-            
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            //bool primeraImagen = false;
             try
             {
-                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == seleccionado.Id);
-                if (imagenesMismoIdArticulo.Count == 0)
-                    cargarImagen("");
-                else
-                    cargarImagen(imagenesMismoIdArticulo[0].ImagenUrl);
-                //foreach (Imagenes imagen in imagenes)
-                //{
-                //    if (seleccionado.Id == imagen.IdArticulo && !primeraImagen)
-                //    {
-                //        pbxArticulos.Load(imagen.ImagenUrl);
-                //        primeraImagen = true;
-                //    }
-                //}
-                //Imagenes seleccionado = (Imagenes)dgv.CurrentRow.DataBoundItem;
-                //pbx.Load(seleccionado.ImagenUrl);
+                if (dgvArticulos.CurrentRow != null)
+                {
+                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == seleccionado.Id);
+                    if (imagenesMismoIdArticulo.Count == 0)
+                        cargarImagen("");
+                    else
+                        cargarImagen(imagenesMismoIdArticulo[0].ImagenUrl);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                //pbxArticulos.Load("https://www.campana.gob.ar/wp-content/uploads/2022/05/placeholder-1.png");
             }
             currentImg = 1;
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == seleccionado.Id);
-            if (imagenesMismoIdArticulo.Count > 1)
+            if (dgvArticulos.CurrentRow != null)
             {
-                if (currentImg < imagenesMismoIdArticulo.Count)
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == seleccionado.Id);
+                if (imagenesMismoIdArticulo.Count > 1)
                 {
-                    currentImg++;
+                    if (currentImg < imagenesMismoIdArticulo.Count)
+                    {
+                        currentImg++;
+                    }
+                    cargarImagen(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
                 }
-                //pbxArticulos.Load(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
-                cargarImagen(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
             }
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == seleccionado.Id);
-            if (imagenesMismoIdArticulo.Count > 1)
+            if (dgvArticulos.CurrentRow != null)
             {
-                if (currentImg > 1)
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == seleccionado.Id);
+                if (imagenesMismoIdArticulo.Count > 1)
                 {
-                    currentImg--;
+                    if (currentImg > 1)
+                    {
+                        currentImg--;
+                    }
+                    cargarImagen(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
                 }
-                //pbxArticulos.Load(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
-                cargarImagen(imagenesMismoIdArticulo[currentImg - 1].ImagenUrl);
             }
         }
 
@@ -174,6 +149,8 @@ namespace TP_WinForm_Eq17
                 listaArticulos = negocio.listar();
                 imagenes = imagenesNegocio.listar();
                 dgvArticulos.DataSource = listaArticulos;
+                dgvArticulos.Columns["Id"].Visible = false;
+                dgvArticulos.Columns["Descripcion"].Visible = false;
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("en-US");
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C2";
@@ -203,12 +180,13 @@ namespace TP_WinForm_Eq17
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo selecionado;
-            selecionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-
-            frmAltaArticulo modificar = new frmAltaArticulo(selecionado);
-            modificar.ShowDialog();
-            cargar();
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo selecionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmAltaArticulo modificar = new frmAltaArticulo(selecionado);
+                modificar.ShowDialog();
+                cargar();
+            } 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
