@@ -177,14 +177,14 @@ namespace TP_WinForm_Eq17
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
-            //frmOtros frmMarca = new frmOtros("Marca");
-            //frmMarca.ShowDialog();
+            frmMarcaCategoria frmMarca = new frmMarcaCategoria("Marca");
+            frmMarca.ShowDialog();
         }
 
         private void btnAgregarCategoria_Click(object sender, EventArgs e)
         {
-            //frmOtros frmCategoria = new frmOtros("Categoria");
-            //frmCategoria.ShowDialog();
+            frmMarcaCategoria frmCategoria = new frmMarcaCategoria("Categoria");
+            frmCategoria.ShowDialog();
         }
     }
 }

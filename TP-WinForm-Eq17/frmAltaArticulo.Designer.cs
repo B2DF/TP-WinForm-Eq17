@@ -81,21 +81,21 @@
             // 
             this.tbxCodigo.Location = new System.Drawing.Point(160, 38);
             this.tbxCodigo.Name = "tbxCodigo";
-            this.tbxCodigo.Size = new System.Drawing.Size(176, 20);
+            this.tbxCodigo.Size = new System.Drawing.Size(209, 20);
             this.tbxCodigo.TabIndex = 0;
             // 
             // tbxNombre
             // 
             this.tbxNombre.Location = new System.Drawing.Point(160, 76);
             this.tbxNombre.Name = "tbxNombre";
-            this.tbxNombre.Size = new System.Drawing.Size(176, 20);
+            this.tbxNombre.Size = new System.Drawing.Size(209, 20);
             this.tbxNombre.TabIndex = 1;
             // 
             // tbxDescripcion
             // 
             this.tbxDescripcion.Location = new System.Drawing.Point(160, 118);
             this.tbxDescripcion.Name = "tbxDescripcion";
-            this.tbxDescripcion.Size = new System.Drawing.Size(176, 20);
+            this.tbxDescripcion.Size = new System.Drawing.Size(209, 20);
             this.tbxDescripcion.TabIndex = 2;
             // 
             // lblMarca
@@ -120,8 +120,8 @@
             // 
             this.tbxPrecio.Location = new System.Drawing.Point(160, 280);
             this.tbxPrecio.Name = "tbxPrecio";
-            this.tbxPrecio.Size = new System.Drawing.Size(176, 20);
-            this.tbxPrecio.TabIndex = 6;
+            this.tbxPrecio.Size = new System.Drawing.Size(209, 20);
+            this.tbxPrecio.TabIndex = 8;
             // 
             // lblPrecio
             // 
@@ -137,17 +137,17 @@
             this.btnAceptar.Location = new System.Drawing.Point(57, 346);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 7;
+            this.btnAceptar.TabIndex = 9;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(261, 346);
+            this.btnCancelar.Location = new System.Drawing.Point(294, 346);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -185,7 +185,7 @@
             this.tbxMarca.Name = "tbxMarca";
             this.tbxMarca.ReadOnly = true;
             this.tbxMarca.Size = new System.Drawing.Size(176, 20);
-            this.tbxMarca.TabIndex = 19;
+            this.tbxMarca.TabIndex = 3;
             this.tbxMarca.TabStop = false;
             // 
             // tbxCategoria
@@ -194,7 +194,7 @@
             this.tbxCategoria.Name = "tbxCategoria";
             this.tbxCategoria.ReadOnly = true;
             this.tbxCategoria.Size = new System.Drawing.Size(176, 20);
-            this.tbxCategoria.TabIndex = 20;
+            this.tbxCategoria.TabIndex = 5;
             this.tbxCategoria.TabStop = false;
             // 
             // btnAgregarImagen
@@ -202,7 +202,7 @@
             this.btnAgregarImagen.Location = new System.Drawing.Point(160, 241);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(27, 21);
-            this.btnAgregarImagen.TabIndex = 21;
+            this.btnAgregarImagen.TabIndex = 7;
             this.btnAgregarImagen.Text = "+";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
@@ -212,7 +212,7 @@
             this.btnAgregarMarca.Location = new System.Drawing.Point(342, 160);
             this.btnAgregarMarca.Name = "btnAgregarMarca";
             this.btnAgregarMarca.Size = new System.Drawing.Size(27, 21);
-            this.btnAgregarMarca.TabIndex = 22;
+            this.btnAgregarMarca.TabIndex = 4;
             this.btnAgregarMarca.Text = "+";
             this.btnAgregarMarca.UseVisualStyleBackColor = true;
             this.btnAgregarMarca.Click += new System.EventHandler(this.btnAgregarMarca_Click);
@@ -222,7 +222,7 @@
             this.btnAgregarCategoria.Location = new System.Drawing.Point(342, 202);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(27, 21);
-            this.btnAgregarCategoria.TabIndex = 23;
+            this.btnAgregarCategoria.TabIndex = 6;
             this.btnAgregarCategoria.Text = "+";
             this.btnAgregarCategoria.UseVisualStyleBackColor = true;
             this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
@@ -231,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 413);
+            this.ClientSize = new System.Drawing.Size(427, 413);
             this.Controls.Add(this.btnAgregarCategoria);
             this.Controls.Add(this.btnAgregarMarca);
             this.Controls.Add(this.btnAgregarImagen);
@@ -252,6 +252,9 @@
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(443, 452);
+            this.MinimumSize = new System.Drawing.Size(443, 452);
             this.Name = "frmAltaArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Articulo";

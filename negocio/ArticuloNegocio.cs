@@ -181,7 +181,6 @@ namespace negocio
                     aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     
-
                     lista.Add(aux);
                 }
 

@@ -52,10 +52,10 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(105, 463);
+            this.btnModificar.Location = new System.Drawing.Point(105, 473);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(86, 23);
-            this.btnModificar.TabIndex = 23;
+            this.btnModificar.TabIndex = 5;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -65,7 +65,7 @@
             this.btnLimpiarCampo.Location = new System.Drawing.Point(223, 22);
             this.btnLimpiarCampo.Name = "btnLimpiarCampo";
             this.btnLimpiarCampo.Size = new System.Drawing.Size(21, 20);
-            this.btnLimpiarCampo.TabIndex = 13;
+            this.btnLimpiarCampo.TabIndex = 1;
             this.btnLimpiarCampo.UseVisualStyleBackColor = true;
             this.btnLimpiarCampo.Click += new System.EventHandler(this.btnLimpiarCampo_Click);
             // 
@@ -83,7 +83,7 @@
             this.btnSiguiente.Location = new System.Drawing.Point(197, 408);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
-            this.btnSiguiente.TabIndex = 17;
+            this.btnSiguiente.TabIndex = 3;
             this.btnSiguiente.Text = "Siguiente";
             this.btnSiguiente.UseVisualStyleBackColor = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
@@ -93,7 +93,7 @@
             this.btnAtras.Location = new System.Drawing.Point(23, 408);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(75, 23);
-            this.btnAtras.TabIndex = 15;
+            this.btnAtras.TabIndex = 2;
             this.btnAtras.Text = "Atrás";
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
@@ -101,7 +101,7 @@
             // lblContTotal
             // 
             this.lblContTotal.AutoSize = true;
-            this.lblContTotal.Location = new System.Drawing.Point(20, 444);
+            this.lblContTotal.Location = new System.Drawing.Point(26, 447);
             this.lblContTotal.Name = "lblContTotal";
             this.lblContTotal.Size = new System.Drawing.Size(19, 13);
             this.lblContTotal.TabIndex = 21;
@@ -167,20 +167,20 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(197, 463);
+            this.btnSalir.Location = new System.Drawing.Point(197, 473);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 20;
+            this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(23, 463);
+            this.btnAgregar.Location = new System.Drawing.Point(23, 473);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 18;
+            this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -199,7 +199,7 @@
             this.tbxSource.Location = new System.Drawing.Point(76, 22);
             this.tbxSource.Name = "tbxSource";
             this.tbxSource.Size = new System.Drawing.Size(140, 20);
-            this.tbxSource.TabIndex = 11;
+            this.tbxSource.TabIndex = 0;
             this.tbxSource.Leave += new System.EventHandler(this.tbxSource_Leave);
             // 
             // lblSource
@@ -215,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 508);
+            this.ClientSize = new System.Drawing.Size(294, 519);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnLimpiarCampo);
             this.Controls.Add(this.lblContImg);
@@ -229,6 +229,9 @@
             this.Controls.Add(this.pbxOtros);
             this.Controls.Add(this.tbxSource);
             this.Controls.Add(this.lblSource);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(310, 558);
+            this.MinimumSize = new System.Drawing.Size(310, 558);
             this.Name = "frmOtros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOtros";

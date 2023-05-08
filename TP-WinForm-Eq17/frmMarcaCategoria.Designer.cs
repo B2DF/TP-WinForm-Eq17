@@ -40,7 +40,7 @@
             this.btnSalir.Location = new System.Drawing.Point(232, 127);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 9;
+            this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
@@ -49,7 +49,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(132, 127);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 8;
+            this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
@@ -58,22 +58,22 @@
             this.btnAceptar.Location = new System.Drawing.Point(34, 127);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 7;
+            this.btnAceptar.TabIndex = 1;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // tbxNombre
             // 
-            this.tbxNombre.Location = new System.Drawing.Point(138, 35);
+            this.tbxNombre.Location = new System.Drawing.Point(96, 35);
             this.tbxNombre.Name = "tbxNombre";
-            this.tbxNombre.Size = new System.Drawing.Size(160, 20);
-            this.tbxNombre.TabIndex = 6;
+            this.tbxNombre.Size = new System.Drawing.Size(211, 20);
+            this.tbxNombre.TabIndex = 0;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(76, 38);
+            this.lblNombre.Location = new System.Drawing.Point(31, 38);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(47, 13);
             this.lblNombre.TabIndex = 5;
@@ -83,12 +83,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 195);
+            this.ClientSize = new System.Drawing.Size(343, 183);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.tbxNombre);
             this.Controls.Add(this.lblNombre);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(359, 222);
+            this.MinimumSize = new System.Drawing.Size(359, 222);
             this.Name = "frmMarcaCategoria";
             this.Text = "frmMarcaCategoria";
             this.Load += new System.EventHandler(this.frmMarcaCategoria_Load);
