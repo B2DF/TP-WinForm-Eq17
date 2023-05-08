@@ -69,7 +69,6 @@
             this.tbxNombre.Name = "tbxNombre";
             this.tbxNombre.Size = new System.Drawing.Size(160, 20);
             this.tbxNombre.TabIndex = 6;
-            this.tbxNombre.TextChanged += new System.EventHandler(this.tbxNombre_TextChanged);
             // 
             // lblNombre
             // 

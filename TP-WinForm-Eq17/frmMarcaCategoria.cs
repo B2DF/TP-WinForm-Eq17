@@ -46,7 +46,7 @@ namespace TP_WinForm_Eq17
             {
                 Categoria categoria = new Categoria();
                 CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-                //listaCategoria= categoriaNegocio.listar();
+                //glistaCategoria= categoriaNegocio.listar();
                 lblNombre.Text = "Categoria";
             }
         }
