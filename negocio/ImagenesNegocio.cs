@@ -29,7 +29,45 @@ namespace negocio
             }
             catch (Exception ex)
             {
-
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void agregar(Imagenes imagen)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO IMAGENES (IdArticulo,ImagenUrl)values (@IdArticulo,@ImagenUrl)");
+                datos.setearParametro("@IdArticulo", imagen.IdArticulo);
+                datos.setearParametro("@ImagenUrl", imagen.ImagenUrl);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void modificar(Imagenes imagen)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE IMAGENES SET IdArticulo=@IdArticulo, ImagenUrl=@ImagenUrl WHERE Id=@Id");
+                datos.setearParametro("@IdArticulo", imagen.IdArticulo);
+                datos.setearParametro("@ImagenUrl", imagen.ImagenUrl);
+                datos.setearParametro("@Id", imagen.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally
