@@ -96,11 +96,91 @@ namespace TP_WinForm_Eq17
             }
         }
 
+        private bool validarCampos()
+        {
+            if(cbSeleccionar.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el campo para filtrar.");
+                return true;
+            }
+
+            if (cbCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el criterio para filtrar.");
+                return true;
+            }
+
+            if (cbSeleccionar.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(txtValor.Text))
+                {
+                    MessageBox.Show("Debes cargar el filtro para precio...");
+                    return true;
+                }
+                if (!(soloNumeros(txtValor.Text)))
+                {
+                    MessageBox.Show("Solo nros para filtrar por un campo precio...");
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+            return true;
+        }
+
         private void btnDetalle_Click(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             frmDetalleArticulo frmDetalle = new frmDetalleArticulo(seleccionado);
             frmDetalle.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                if (validarCampos()) return;
+
+                string campo = cbSeleccionar.SelectedItem.ToString();
+                string criterio = cbCriterio.SelectedItem.ToString();
+                string filtro = txtValor.Text;
+                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        private void cbSeleccionar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbSeleccionar.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Mayor a");
+                cbCriterio.Items.Add("Menor a");
+                cbCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Comienza con");
+                cbCriterio.Items.Add("Termina con");
+                cbCriterio.Items.Add("Contiene");
+            }
         }
     }
 }
