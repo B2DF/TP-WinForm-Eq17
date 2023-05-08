@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using dominio;
-using negocio;
 
 namespace TP_WinForm_Eq17
 {
@@ -48,26 +48,14 @@ namespace TP_WinForm_Eq17
             //    MessageBox.Show(ex.ToString());
             //}
             cargar();
-        }
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
+        
+       
 
             cbSeleccionar.Items.Add("Codigo");
             cbSeleccionar.Items.Add("Nombre");
             cbSeleccionar.Items.Add("Descripcion");
             cbSeleccionar.Items.Add("Precio");
-            try
-            {
-                listaArticulos = articuloNegocio.listar();
-                imagenes = imagenesNegocio.listar();
-                dgvArticulos.DataSource = listaArticulos;
-                //dgv.DataSource = imagenes;
-                pbxArticulos.Load(imagenes[0].ImagenUrl);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
