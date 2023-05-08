@@ -163,13 +163,6 @@
             // cbSeleccionar
             // 
             this.cbSeleccionar.FormattingEnabled = true;
-            this.cbSeleccionar.Items.AddRange(new object[] {
-            "Codigo",
-            "Nombre",
-            "Descripcion",
-            "Marca",
-            "Categoria",
-            "Precio"});
             this.cbSeleccionar.Location = new System.Drawing.Point(103, 399);
             this.cbSeleccionar.Name = "cbSeleccionar";
             this.cbSeleccionar.Size = new System.Drawing.Size(96, 21);

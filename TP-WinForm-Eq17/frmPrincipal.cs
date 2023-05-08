@@ -27,6 +27,11 @@ namespace TP_WinForm_Eq17
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
+
+            cbSeleccionar.Items.Add("Codigo");
+            cbSeleccionar.Items.Add("Nombre");
+            cbSeleccionar.Items.Add("Descripcion");
+            cbSeleccionar.Items.Add("Precio");
             try
             {
                 listaArticulos = articuloNegocio.listar();
@@ -37,8 +42,6 @@ namespace TP_WinForm_Eq17
             }
             catch (Exception ex)
             {
-
-                //throw ex;
                 MessageBox.Show(ex.ToString());
             }
         }
