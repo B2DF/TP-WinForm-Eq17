@@ -15,7 +15,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT A.Id AId,Codigo,Nombre,A.Descripcion ADes, C.Descripcion CDes, A.IdMarca, A.IdCategoria, M.Descripcion MDes, Precio FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE C.Id=A.IdCategoria AND M.Id=A.IdMarca");
+                datos.setearConsulta("SELECT A.Id AId,Codigo,Nombre,A.Descripcion ADes, A.IdCategoria AIdCate, C.Descripcion CDes, A.IdMarca AIdMarca, M.Descripcion MDes, Precio FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE C.Id=A.IdCategoria AND M.Id=A.IdMarca");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -25,10 +25,10 @@ namespace negocio
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["ADes"];
                     aux.Categoria = new Categoria();
-                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    aux.Categoria.Id = (int)datos.Lector["AIdCate"];
                     aux.Categoria.Descripcion = (string)datos.Lector["CDes"];
                     aux.Marca = new Marca();
-                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                    aux.Marca.Id = (int)datos.Lector["AIdMarca"];
                     aux.Marca.Descripcion = (string)datos.Lector["MDes"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
                     listaArticulos.Add(aux);
@@ -49,10 +49,8 @@ namespace negocio
         public void agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-
                 datos.setearConsulta("INSERT INTO ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,Precio) VALUES (@codigo,@nombre,@desc,@marca,@categoria,@precio)");
                 datos.setearParametro("@codigo", nuevo.Codigo);
                 datos.setearParametro("@nombre", nuevo.Nombre);
@@ -75,19 +73,16 @@ namespace negocio
         public void modificar(Articulo art)
         {
             AccesoDatos datos = new AccesoDatos();
-
-
             try
             {
                 datos.setearConsulta("UPDATE ARTICULOS SET Codigo=@codigo,Nombre=@nombre,Descripcion=@desc,IdMarca=@marca,IdCategoria=@categoria,Precio=@precio WHERE Id=@id");
-               datos.setearParametro("@codigo", art.Codigo);
+                datos.setearParametro("@codigo", art.Codigo);
                 datos.setearParametro("@nombre", art.Nombre);
                 datos.setearParametro("@desc", art.Descripcion);
                 datos.setearParametro("@marca", art.Marca.Id);
                 datos.setearParametro("@categoria", art.Categoria.Id);
                 datos.setearParametro("@precio", art.Precio);
                 datos.setearParametro("@id", art.Id);
-
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -102,17 +97,20 @@ namespace negocio
 
         public void eliminar(int id)
         {
+            AccesoDatos datos = new AccesoDatos();
             try
             {
-                AccesoDatos datos = new AccesoDatos();
                 datos.setearConsulta("delete from articulos where id = @id");
                 datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
-
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 
@@ -194,10 +192,5 @@ namespace negocio
                 throw ex;
             }
         }
-
-
-
-
-
     }
 }
