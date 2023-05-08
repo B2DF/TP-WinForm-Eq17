@@ -45,6 +45,8 @@
             this.tbxUrlImagen = new System.Windows.Forms.TextBox();
             this.lblUrlImagen = new System.Windows.Forms.Label();
             this.pbxAltaArticulo = new System.Windows.Forms.PictureBox();
+            this.tbxMarca = new System.Windows.Forms.TextBox();
+            this.tbxCategoria = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAltaArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,7 +111,7 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(54, 210);
+            this.lblCategoria.Location = new System.Drawing.Point(54, 205);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(55, 13);
             this.lblCategoria.TabIndex = 7;
@@ -195,11 +197,31 @@
             this.pbxAltaArticulo.TabIndex = 18;
             this.pbxAltaArticulo.TabStop = false;
             // 
+            // tbxMarca
+            // 
+            this.tbxMarca.Location = new System.Drawing.Point(160, 160);
+            this.tbxMarca.Name = "tbxMarca";
+            this.tbxMarca.ReadOnly = true;
+            this.tbxMarca.Size = new System.Drawing.Size(176, 20);
+            this.tbxMarca.TabIndex = 19;
+            this.tbxMarca.TabStop = false;
+            // 
+            // tbxCategoria
+            // 
+            this.tbxCategoria.Location = new System.Drawing.Point(160, 202);
+            this.tbxCategoria.Name = "tbxCategoria";
+            this.tbxCategoria.ReadOnly = true;
+            this.tbxCategoria.Size = new System.Drawing.Size(176, 20);
+            this.tbxCategoria.TabIndex = 20;
+            this.tbxCategoria.TabStop = false;
+            // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 413);
+            this.Controls.Add(this.tbxCategoria);
+            this.Controls.Add(this.tbxMarca);
             this.Controls.Add(this.pbxAltaArticulo);
             this.Controls.Add(this.tbxUrlImagen);
             this.Controls.Add(this.lblUrlImagen);
@@ -245,5 +267,7 @@
         private System.Windows.Forms.TextBox tbxUrlImagen;
         private System.Windows.Forms.Label lblUrlImagen;
         private System.Windows.Forms.PictureBox pbxAltaArticulo;
+        private System.Windows.Forms.TextBox tbxMarca;
+        private System.Windows.Forms.TextBox tbxCategoria;
     }
 }

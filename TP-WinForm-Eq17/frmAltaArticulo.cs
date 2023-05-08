@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using negocio;
 using dominio;
-
+using System.Globalization;
 
 namespace TP_WinForm_Eq17
 {
@@ -19,6 +19,8 @@ namespace TP_WinForm_Eq17
         private Articulo articulo = null;
         private OpenFileDialog archivo = null;
         private List<Imagenes> imagenes;
+        private List<Imagenes> imagenesMismoIdArticulo;
+        bool detalle;
         public frmAltaArticulo()
         {
             InitializeComponent();
@@ -30,8 +32,13 @@ namespace TP_WinForm_Eq17
             this.articulo = articulo;
             Text = "Modificar Articulo";
         }
-
-
+        public frmAltaArticulo(Articulo articulo, bool detalle)
+        {
+            InitializeComponent();
+            this.articulo= articulo;
+            this.detalle= detalle;
+            Text = "Detalle Articulo";
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -89,8 +96,41 @@ namespace TP_WinForm_Eq17
 
             try
             {
+                tbxMarca.Visible = false;
+                tbxCategoria.Visible = false;
+                if (detalle)
+                {
+                    tbxCodigo.ReadOnly = true;
+                    tbxCodigo.TabStop = false;
+                    tbxNombre.ReadOnly = true;
+                    tbxNombre.TabStop = false;
+                    tbxDescripcion.ReadOnly = true;
+                    tbxDescripcion.TabStop = false;
+                    cboMarca.Visible = false;
+                    tbxMarca.Visible = true;
+                    cboCategoria.Visible = false;
+                    tbxCategoria.Visible = true;
+                    lblUrlImagen.Visible = false;
+                    tbxUrlImagen.Visible = false;
+                    tbxPrecio.ReadOnly = true;
+                    tbxPrecio.TabStop = false;
+                    lblPrecio.Location= new System.Drawing.Point(54, 245);
+                    tbxPrecio.Location = new System.Drawing.Point(160, 242);
+                    btnAceptar.Visible = false;
+                    btnCancelar.Visible = false;
+                }
                 imagenes = imagenesNegocio.listar();
-                pbxAltaArticulo.Load(imagenes[0].ImagenUrl);
+
+                if(articulo!=null)
+                {
+                    imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == articulo.Id);
+                    if (imagenesMismoIdArticulo.Count == 0)
+                        cargarImagen("");
+                    else
+                        cargarImagen(imagenesMismoIdArticulo[0].ImagenUrl);
+                }
+                //pbxAltaArticulo.Load(imagenes[0].ImagenUrl);
+
                 cboMarca.DataSource = marcaNegocio.listar();
                 cboMarca.ValueMember = "Id";
                 cboMarca.DisplayMember = "Descripcion";
@@ -106,7 +146,15 @@ namespace TP_WinForm_Eq17
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                     tbxPrecio.Text = articulo.Precio.ToString();
-
+                    if (detalle)
+                    {
+                        tbxCodigo.Text = articulo.Codigo;
+                        tbxNombre.Text = articulo.Nombre;
+                        tbxDescripcion.Text = articulo.Descripcion;
+                        tbxMarca.Text = articulo.Marca.Descripcion;
+                        tbxCategoria.Text = articulo.Categoria.Descripcion;
+                        tbxPrecio.Text = articulo.Precio.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
+                    }
                 }
             }
             catch (Exception ex)
@@ -126,7 +174,7 @@ namespace TP_WinForm_Eq17
         {
             try
             {
-                pbxAltaArticulo.Load(tbxUrlImagen.Text);
+                pbxAltaArticulo.Load(imagen);
             }
             catch (Exception ex)
             {
