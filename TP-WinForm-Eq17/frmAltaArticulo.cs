@@ -17,9 +17,9 @@ namespace TP_WinForm_Eq17
     public partial class frmAltaArticulo : Form
     {
         private Articulo articulo = null;
-        private OpenFileDialog archivo = null;
-        private List<Imagenes> imagenes;
-        private List<Imagenes> imagenesMismoIdArticulo;
+        private List<Imagenes> listaImagenesAlta = new List<Imagenes>();//Lista cuando no hay articulo
+        private List<Imagenes> listaModificar = new List<Imagenes>();//Lista cuando hay articulo y modificamos, para retornar.
+        private List<Imagenes> listaAgregarImgArticulosExistentes = new List<Imagenes>();//Lista agregar imagenes a articulos existentes, para retornar
         bool detalle;
         public frmAltaArticulo()
         {
@@ -40,11 +40,6 @@ namespace TP_WinForm_Eq17
             Text = "Detalle Articulo";
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -53,20 +48,38 @@ namespace TP_WinForm_Eq17
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-
+            ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
             try
             {
                 if (articulo == null)
                     articulo = new Articulo();
-
                 articulo.Codigo = tbxCodigo.Text;
                 articulo.Nombre = tbxNombre.Text;
                 articulo.Descripcion = tbxDescripcion.Text;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                //imagenes
                 articulo.Precio = decimal.Parse(tbxPrecio.Text);
-
+                if (listaImagenesAlta != null && listaImagenesAlta.Count > 0)
+                {
+                    foreach (Imagenes imagen in listaImagenesAlta)
+                    {
+                        imagenesNegocio.agregar(imagen);
+                    }
+                }
+                if (listaAgregarImgArticulosExistentes != null && listaAgregarImgArticulosExistentes.Count > 0)
+                {
+                    foreach (Imagenes imagen in listaAgregarImgArticulosExistentes)
+                    {
+                        imagenesNegocio.agregar(imagen);
+                    }
+                }
+                if (listaModificar != null && listaModificar.Count > 0)
+                {
+                    foreach (Imagenes imagen in listaModificar)
+                    {
+                        imagenesNegocio.modificar(imagen);
+                    }
+                }
                 if (articulo.Id != 0)
                 {
                     negocio.modificar(articulo);
@@ -77,23 +90,18 @@ namespace TP_WinForm_Eq17
                     negocio.agregar(articulo);
                     MessageBox.Show("Agregado exitosamente");
                 }
-
                 Close();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
         }
 
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
-
             try
             {
                 tbxMarca.Visible = false;
@@ -108,10 +116,12 @@ namespace TP_WinForm_Eq17
                     tbxDescripcion.TabStop = false;
                     cboMarca.Visible = false;
                     tbxMarca.Visible = true;
+                    btnAgregarMarca.Visible = false;
                     cboCategoria.Visible = false;
                     tbxCategoria.Visible = true;
+                    btnAgregarCategoria.Visible = false;
                     lblUrlImagen.Visible = false;
-                    tbxUrlImagen.Visible = false;
+                    btnAgregarImagen.Visible = false;
                     tbxPrecio.ReadOnly = true;
                     tbxPrecio.TabStop = false;
                     lblPrecio.Location= new System.Drawing.Point(54, 245);
@@ -119,18 +129,6 @@ namespace TP_WinForm_Eq17
                     btnAceptar.Visible = false;
                     btnCancelar.Visible = false;
                 }
-                imagenes = imagenesNegocio.listar();
-
-                if(articulo!=null)
-                {
-                    imagenesMismoIdArticulo = imagenes.FindAll(x => x.IdArticulo == articulo.Id);
-                    if (imagenesMismoIdArticulo.Count == 0)
-                        cargarImagen("");
-                    else
-                        cargarImagen(imagenesMismoIdArticulo[0].ImagenUrl);
-                }
-                //pbxAltaArticulo.Load(imagenes[0].ImagenUrl);
-
                 cboMarca.DataSource = marcaNegocio.listar();
                 cboMarca.ValueMember = "Id";
                 cboMarca.DisplayMember = "Descripcion";
@@ -164,22 +162,29 @@ namespace TP_WinForm_Eq17
             
         }
 
-        private void tbxUrlImagen_Leave(object sender, EventArgs e)
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
-            cargarImagen(tbxUrlImagen.Text);
-             
+            frmOtros frmImagen;
+            if (articulo == null)
+                frmImagen = new frmOtros(); 
+            else
+                frmImagen = new frmOtros(articulo);
+            frmImagen.ShowDialog();
+            listaImagenesAlta = frmImagen.retornarListaImagenesAlta();
+            listaAgregarImgArticulosExistentes = frmImagen.retornarListaAgregarImgArtExistenes();
+            listaModificar = frmImagen.retornarListaImgModificar();
         }
 
-        private void cargarImagen(string imagen)
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
-            try
-            {
-                pbxAltaArticulo.Load(imagen);
-            }
-            catch (Exception ex)
-            {
-                pbxAltaArticulo.Load("https://www.campana.gob.ar/wp-content/uploads/2022/05/placeholder-1.png");
-            }
+            //frmOtros frmMarca = new frmOtros("Marca");
+            //frmMarca.ShowDialog();
+        }
+
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            //frmOtros frmCategoria = new frmOtros("Categoria");
+            //frmCategoria.ShowDialog();
         }
     }
 }
