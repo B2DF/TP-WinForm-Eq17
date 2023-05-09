@@ -100,8 +100,6 @@ namespace TP_WinForm_Eq17
 
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
-            MarcaNegocio marcaNegocio = new MarcaNegocio();
-            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             try
             {
                 tbxMarca.Visible = false;
@@ -116,9 +114,11 @@ namespace TP_WinForm_Eq17
                     tbxDescripcion.TabStop = false;
                     cboMarca.Visible = false;
                     tbxMarca.Visible = true;
+                    tbxMarca.Width = 209;
                     btnAgregarMarca.Visible = false;
                     cboCategoria.Visible = false;
                     tbxCategoria.Visible = true;
+                    tbxCategoria.Width = 209;
                     btnAgregarCategoria.Visible = false;
                     lblUrlImagen.Visible = false;
                     btnAgregarImagen.Visible = false;
@@ -129,13 +129,7 @@ namespace TP_WinForm_Eq17
                     btnAceptar.Visible = false;
                     btnCancelar.Visible = false;
                 }
-                cboMarca.DataSource = marcaNegocio.listar();
-                cboMarca.ValueMember = "Id";
-                cboMarca.DisplayMember = "Descripcion";
-                cboCategoria.DataSource = categoriaNegocio.listar();
-                cboCategoria.ValueMember = "Id";
-                cboCategoria.DisplayMember = "Descripcion";
-
+                cargarComboBox();
                 if (articulo != null)
                 {
                     tbxCodigo.Text = articulo.Codigo;
@@ -161,6 +155,24 @@ namespace TP_WinForm_Eq17
             } 
             
         }
+        private void cargarComboBox()
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            try
+            {
+                cboMarca.DataSource = marcaNegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
+                cboCategoria.DataSource = categoriaNegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
@@ -179,12 +191,14 @@ namespace TP_WinForm_Eq17
         {
             frmMarcaCategoria frmMarca = new frmMarcaCategoria("Marca");
             frmMarca.ShowDialog();
+            cargarComboBox();
         }
 
         private void btnAgregarCategoria_Click(object sender, EventArgs e)
         {
             frmMarcaCategoria frmCategoria = new frmMarcaCategoria("Categoria");
             frmCategoria.ShowDialog();
+            cargarComboBox();
         }
     }
 }
