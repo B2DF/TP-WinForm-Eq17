@@ -40,7 +40,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO CATEGORIA (Descripcion)VALUES(@Descripcion)");
+                datos.setearConsulta("INSERT INTO CATEGORIAS (Descripcion)VALUES(@Descripcion)");
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
                 datos.ejecutarAccion();
             }
@@ -59,7 +59,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE CATEGORIA SET Descripcion=@Descripcion WHERE Id=@Id");
+                datos.setearConsulta("UPDATE CATEGORIAS SET Descripcion=@Descripcion WHERE Id=@Id");
                 datos.setearParametro("@Descripcion", modificar.Descripcion);
                 datos.setearParametro("@Id", modificar.Id);
                 datos.ejecutarAccion();
