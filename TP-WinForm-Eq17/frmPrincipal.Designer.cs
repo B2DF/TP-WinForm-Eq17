@@ -165,6 +165,7 @@
             // 
             // cbSeleccionar
             // 
+            this.cbSeleccionar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSeleccionar.FormattingEnabled = true;
             this.cbSeleccionar.Location = new System.Drawing.Point(103, 22);
             this.cbSeleccionar.Name = "cbSeleccionar";
@@ -174,6 +175,7 @@
             // 
             // cbCriterio
             // 
+            this.cbCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCriterio.FormattingEnabled = true;
             this.cbCriterio.Items.AddRange(new object[] {
             "Codigo",

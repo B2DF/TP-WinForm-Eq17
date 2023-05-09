@@ -136,9 +136,12 @@ namespace TP_WinForm_Eq17
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAltaArticulo frmdetalle = new frmAltaArticulo(seleccionado, true);
-            frmdetalle.ShowDialog();
+            if(dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                frmAltaArticulo frmdetalle = new frmAltaArticulo(seleccionado, true);
+                frmdetalle.ShowDialog();
+            }
         }
         private void cargar()
         {
@@ -192,15 +195,17 @@ namespace TP_WinForm_Eq17
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            Articulo seleccionado;
             try
             {
-                DialogResult respuesta = MessageBox.Show("¿Desea eliminar el articulo seleccionado?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (respuesta == DialogResult.Yes)
+                if (dgvArticulos.CurrentRow != null)
                 {
-                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                negocio.eliminar(seleccionado.Id);
-                cargar();
+                    DialogResult respuesta = MessageBox.Show("¿Desea eliminar el articulo seleccionado?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                        negocio.eliminar(seleccionado.Id);
+                        cargar();
+                    }
                 }
             }
             catch (Exception ex)
