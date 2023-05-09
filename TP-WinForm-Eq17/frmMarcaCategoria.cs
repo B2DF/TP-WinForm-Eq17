@@ -26,31 +26,50 @@ namespace TP_WinForm_Eq17
         {
             InitializeComponent();
             this.tag = tag;
+            if (tag == "Marca")
+                Text = tag;
+            if(tag=="Categoria")
+                Text = tag;
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            if (tag == "Marca")
+            {
+                Marca marca = new Marca();
+                MarcaNegocio marcaNegocio = new MarcaNegocio();
+                marca.Descripcion=tbxNombre.Text;
+                marcaNegocio.agregar(marca);
+            }
+            else if (tag == "Categoria")
+            {
+                Categoria categoria = new Categoria();
+                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                categoria.Descripcion= tbxNombre.Text;
+                categoriaNegocio.agregar(categoria);
+            }
+            MessageBox.Show("Agregado exitosamente");
         }
 
         private void frmMarcaCategoria_Load(object sender, EventArgs e)
         {
             if(tag == "Marca")
             {
-                Marca marca = new Marca();
-                MarcaNegocio marcaNegocio = new MarcaNegocio();
-                //listaMarca = marcaNegocio.listar();
                 lblNombre.Text = "Marca:";
-
             }
             else if(tag == "Categoria")
             {
-                Categoria categoria = new Categoria();
-                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-                //listaCategoria= categoriaNegocio.listar();
                 lblNombre.Text = "Categoria";
             }
         }
 
-      
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

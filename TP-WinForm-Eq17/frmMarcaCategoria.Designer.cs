@@ -43,6 +43,7 @@
             this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnEliminar
             // 
@@ -52,6 +53,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAceptar
             // 
@@ -93,6 +95,7 @@
             this.MaximumSize = new System.Drawing.Size(359, 222);
             this.MinimumSize = new System.Drawing.Size(359, 222);
             this.Name = "frmMarcaCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMarcaCategoria";
             this.Load += new System.EventHandler(this.frmMarcaCategoria_Load);
             this.ResumeLayout(false);
