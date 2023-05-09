@@ -200,5 +200,6 @@ namespace TP_WinForm_Eq17
             frmCategoria.ShowDialog();
             cargarComboBox();
         }
+
     }
 }

@@ -33,21 +33,23 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.tbxNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.lblEliminar = new System.Windows.Forms.Label();
+            this.cbxEliminar = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(232, 127);
+            this.btnSalir.Location = new System.Drawing.Point(257, 137);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(132, 127);
+            this.btnEliminar.Location = new System.Drawing.Point(257, 76);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 2;
@@ -57,11 +59,11 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(34, 127);
+            this.btnAceptar.Location = new System.Drawing.Point(257, 33);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 1;
-            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.Text = "Agregar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
@@ -69,7 +71,7 @@
             // 
             this.tbxNombre.Location = new System.Drawing.Point(96, 35);
             this.tbxNombre.Name = "tbxNombre";
-            this.tbxNombre.Size = new System.Drawing.Size(211, 20);
+            this.tbxNombre.Size = new System.Drawing.Size(155, 20);
             this.tbxNombre.TabIndex = 0;
             // 
             // lblNombre
@@ -81,19 +83,39 @@
             this.lblNombre.TabIndex = 5;
             this.lblNombre.Text = "Nombre:";
             // 
+            // lblEliminar
+            // 
+            this.lblEliminar.AutoSize = true;
+            this.lblEliminar.Location = new System.Drawing.Point(34, 81);
+            this.lblEliminar.Name = "lblEliminar";
+            this.lblEliminar.Size = new System.Drawing.Size(46, 13);
+            this.lblEliminar.TabIndex = 6;
+            this.lblEliminar.Text = "Eliminar:";
+            // 
+            // cbxEliminar
+            // 
+            this.cbxEliminar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEliminar.FormattingEnabled = true;
+            this.cbxEliminar.Location = new System.Drawing.Point(96, 78);
+            this.cbxEliminar.Name = "cbxEliminar";
+            this.cbxEliminar.Size = new System.Drawing.Size(155, 21);
+            this.cbxEliminar.TabIndex = 7;
+            // 
             // frmMarcaCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 183);
+            this.ClientSize = new System.Drawing.Size(377, 191);
+            this.Controls.Add(this.cbxEliminar);
+            this.Controls.Add(this.lblEliminar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.tbxNombre);
             this.Controls.Add(this.lblNombre);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(359, 222);
-            this.MinimumSize = new System.Drawing.Size(359, 222);
+            this.MaximumSize = new System.Drawing.Size(393, 230);
+            this.MinimumSize = new System.Drawing.Size(393, 230);
             this.Name = "frmMarcaCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMarcaCategoria";
@@ -110,5 +132,7 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.TextBox tbxNombre;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblEliminar;
+        private System.Windows.Forms.ComboBox cbxEliminar;
     }
 }
