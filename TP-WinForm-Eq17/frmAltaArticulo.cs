@@ -45,6 +45,39 @@ namespace TP_WinForm_Eq17
             Close();
         }
 
+        public bool ValidateDecimal(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                MessageBox.Show("El campo Precio no puede estar vacío");
+                return false;
+            }
+
+            decimal result;
+            if (!decimal.TryParse(input, out result))
+            {
+                MessageBox.Show("Decimal no válido");
+                return false;
+            }
+            else
+            {
+                int intResult;
+                if (!int.TryParse(input, out intResult))
+                {
+                    MessageBox.Show("El precio debe ser un número válido");
+                    return false;
+                }
+            }
+
+            if (result != Math.Round(result, 2))
+            {
+                MessageBox.Show("El precio solo debe tener dos decimales");
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -58,7 +91,10 @@ namespace TP_WinForm_Eq17
                 articulo.Descripcion = tbxDescripcion.Text;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+
+                if (!ValidateDecimal(decimal.Parse(tbxPrecio.Text).ToString())) return;
                 articulo.Precio = decimal.Parse(tbxPrecio.Text);
+
                 if (listaImagenesAlta != null && listaImagenesAlta.Count > 0)
                 {
                     foreach (Imagenes imagen in listaImagenesAlta)
