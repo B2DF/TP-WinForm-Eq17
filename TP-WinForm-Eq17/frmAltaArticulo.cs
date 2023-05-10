@@ -59,15 +59,7 @@ namespace TP_WinForm_Eq17
                 MessageBox.Show("Decimal no válido");
                 return false;
             }
-            else
-            {
-                int intResult;
-                if (!int.TryParse(input, out intResult))
-                {
-                    MessageBox.Show("El precio debe ser un número válido");
-                    return false;
-                }
-            }
+           
 
             if (result != Math.Round(result, 2))
             {
@@ -91,7 +83,6 @@ namespace TP_WinForm_Eq17
                 articulo.Descripcion = tbxDescripcion.Text;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-
                 if (!ValidateDecimal(decimal.Parse(tbxPrecio.Text).ToString())) return;
                 articulo.Precio = decimal.Parse(tbxPrecio.Text);
 
